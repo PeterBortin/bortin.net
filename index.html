@@ -1,145 +1,759 @@
+<!DOCTYPE html>
 
-
-<!doctype html>
-<html>
+<html lang="uk">
 <head>
-    <meta name="minterscan-verification" content="Mxee9c80f44b9481c721fc01db0996009f40143342">
-    <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <link rel="shortcut icon" type="image/png" href="favicon.png">
-    
-	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css?5719">
-	<link rel="stylesheet" type="text/css" href="style.css?8424">
-	<link rel="stylesheet" type="text/css" href="./css/animate.min.css?5043">
-	<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="./css/feather.min.css">
-	<link href='https://fonts.googleapis.com/css?family=Montserrat&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    
-	<script src="./js/jquery-3.3.1.min.js?6502"></script>
-	<script src="./js/bootstrap.bundle.min.js?4326"></script>
-	<script src="./js/blocs.min.js?3086"></script>
-	<script src="./js/lazysizes.min.js" defer></script>
-    <title>bortin.net</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Донат на Лінь</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+```
+    body {
+        font-family: 'MS Sans Serif', 'Tahoma', sans-serif;
+        background: #c0c0c0;
+        min-height: 100vh;
+        color: #000000;
+        font-size: 11px;
+        overflow-x: hidden;
+    }
 
-    
-<!-- Analytics -->
- 
-<!-- Analytics END -->
-    
+    .desktop {
+        background: #008080;
+        min-height: 100vh;
+        padding: 10px;
+    }
+
+    .window {
+        background: #c0c0c0;
+        border: 2px outset #c0c0c0;
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        max-width: 900px;
+        margin: 0 auto;
+        min-height: calc(100vh - 20px);
+    }
+
+    .title-bar {
+        background: linear-gradient(90deg, #0a246a 0%, #a6caf0 3%, #0a246a 97%, #0a246a 100%);
+        color: white;
+        padding: 3px 6px;
+        font-weight: bold;
+        font-size: 11px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: move;
+    }
+
+    .title-bar.inactive {
+        background: linear-gradient(90deg, #404040 0%, #c0c0c0 3%, #404040 97%, #404040 100%);
+        color: #c0c0c0;
+    }
+
+    .window-title {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .window-icon {
+        width: 16px;
+        height: 16px;
+        background: #ffff00;
+        border: 1px solid #000;
+        font-size: 8px;
+        line-height: 14px;
+        text-align: center;
+        color: #000;
+    }
+
+    .window-controls {
+        display: flex;
+        gap: 2px;
+    }
+
+    .control-btn {
+        width: 16px;
+        height: 14px;
+        background: #c0c0c0;
+        border: 1px outset #c0c0c0;
+        font-size: 8px;
+        line-height: 12px;
+        text-align: center;
+        cursor: pointer;
+        color: #000;
+    }
+
+    .control-btn:active {
+        border: 1px inset #c0c0c0;
+    }
+
+    .control-btn:hover {
+        background: #d4d0c8;
+    }
+
+    .menu-bar {
+        background: #c0c0c0;
+        border-bottom: 1px solid #808080;
+        padding: 2px 6px;
+        font-size: 11px;
+        display: flex;
+        gap: 2px;
+    }
+
+    .menu-item {
+        padding: 4px 8px;
+        cursor: pointer;
+        border: 1px solid transparent;
+    }
+
+    .menu-item:hover {
+        border: 1px outset #c0c0c0;
+        background: #d4d0c8;
+    }
+
+    .menu-item:active {
+        border: 1px inset #c0c0c0;
+    }
+
+    .window-content {
+        padding: 8px;
+        background: #c0c0c0;
+        min-height: 500px;
+    }
+
+    .main-content {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+
+    .left-panel, .right-panel {
+        flex: 1;
+    }
+
+    .group-box {
+        border: 2px groove #c0c0c0;
+        padding: 16px 8px 8px 8px;
+        margin-bottom: 8px;
+        position: relative;
+        background: #c0c0c0;
+    }
+
+    .group-title {
+        position: absolute;
+        top: -7px;
+        left: 12px;
+        background: #c0c0c0;
+        padding: 0 4px;
+        font-size: 11px;
+        font-weight: normal;
+        color: #000080;
+    }
+
+    .total-amount {
+        text-align: center;
+        margin-bottom: 12px;
+        padding: 8px;
+        background: #ffffff;
+        border: 2px inset #c0c0c0;
+    }
+
+    .amount-display {
+        font-size: 20px;
+        font-weight: bold;
+        color: #000080;
+        font-family: 'Courier New', monospace;
+        letter-spacing: 1px;
+    }
+
+    .currency {
+        font-size: 9px;
+        color: #008000;
+        margin-top: 2px;
+    }
+
+    .donation-form {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 12px;
+    }
+
+    .form-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .label {
+        min-width: 50px;
+        font-size: 11px;
+        color: #000080;
+    }
+
+    .amount-input {
+        padding: 3px 4px;
+        border: 2px inset #c0c0c0;
+        background: white;
+        font-size: 11px;
+        font-family: 'MS Sans Serif', sans-serif;
+        flex: 1;
+        min-height: 20px;
+    }
+
+    .amount-input:focus {
+        outline: 1px dotted #000;
+        outline-offset: -2px;
+    }
+
+    .btn {
+        padding: 6px 16px;
+        background: #c0c0c0;
+        border: 2px outset #c0c0c0;
+        font-size: 11px;
+        font-family: 'MS Sans Serif', sans-serif;
+        cursor: pointer;
+        margin-top: 8px;
+        min-height: 24px;
+    }
+
+    .btn:active {
+        border: 2px inset #c0c0c0;
+    }
+
+    .btn:hover {
+        background: #d4d0c8;
+    }
+
+    .btn:focus {
+        outline: 1px dotted #000;
+        outline-offset: -4px;
+    }
+
+    .console {
+        background: #000080;
+        color: #ffffff;
+        padding: 4px 6px;
+        height: 280px;
+        overflow-y: auto;
+        font-family: 'Courier New', monospace;
+        font-size: 9px;
+        line-height: 1.3;
+        border: 2px inset #c0c0c0;
+        word-wrap: break-word;
+    }
+
+    .console-line {
+        margin-bottom: 1px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .timestamp {
+        color: #ffff00;
+    }
+
+    .donor-name {
+        color: #00ffff;
+        font-weight: bold;
+    }
+
+    .amount {
+        color: #00ff00;
+        font-weight: bold;
+    }
+
+    .system-msg {
+        color: #ff8080;
+    }
+
+    .laziness-meter {
+        margin: 12px 0;
+        padding: 8px;
+        background: #f0f0f0;
+        border: 2px inset #c0c0c0;
+    }
+
+    .meter-label {
+        margin-bottom: 6px;
+        font-size: 11px;
+        font-weight: bold;
+        color: #000080;
+    }
+
+    .progress-container {
+        background: #808080;
+        border: 2px inset #c0c0c0;
+        height: 18px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #0000ff 0%, #8080ff 50%, #0000ff 100%);
+        width: 0%;
+        transition: width 1s ease-out;
+        position: relative;
+    }
+
+    .progress-fill::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(255,255,255,0.1) 2px,
+            rgba(255,255,255,0.1) 4px
+        );
+    }
+
+    .laziness-text {
+        font-size: 10px;
+        color: #008000;
+        margin-top: 4px;
+        font-weight: bold;
+    }
+
+    .status-bar {
+        background: #c0c0c0;
+        border-top: 1px solid #808080;
+        padding: 3px 8px;
+        font-size: 10px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .status-panel {
+        border: 1px inset #c0c0c0;
+        padding: 2px 6px;
+        min-width: 80px;
+        background: #f0f0f0;
+        flex: 1;
+        min-width: 100px;
+    }
+
+    .achievement-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #c0c0c0;
+        border: 2px outset #c0c0c0;
+        box-shadow: 4px 4px 12px rgba(0,0,0,0.5);
+        z-index: 1000;
+        min-width: 300px;
+        display: none;
+    }
+
+    .modal-title-bar {
+        background: linear-gradient(90deg, #0a246a 0%, #a6caf0 3%, #0a246a 97%, #0a246a 100%);
+        color: white;
+        padding: 3px 6px;
+        font-weight: bold;
+        font-size: 11px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .modal-content {
+        padding: 16px;
+        text-align: center;
+    }
+
+    .modal-message {
+        margin-bottom: 16px;
+        font-size: 11px;
+        line-height: 1.4;
+    }
+
+    .modal-btn {
+        padding: 4px 16px;
+        background: #c0c0c0;
+        border: 2px outset #c0c0c0;
+        font-size: 11px;
+        cursor: pointer;
+    }
+
+    .modal-btn:active {
+        border: 2px inset #c0c0c0;
+    }
+
+    /* Мобільна адаптивність */
+    @media (max-width: 768px) {
+        .desktop {
+            padding: 5px;
+        }
+        
+        .window {
+            min-height: calc(100vh - 10px);
+        }
+        
+        .main-content {
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .console {
+            height: 200px;
+            font-size: 8px;
+        }
+        
+        .amount-display {
+            font-size: 16px;
+        }
+        
+        .status-bar {
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .status-panel {
+            min-width: auto;
+        }
+        
+        .achievement-modal {
+            min-width: 280px;
+            max-width: 90vw;
+        }
+        
+        .form-row {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 4px;
+        }
+        
+        .label {
+            min-width: auto;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .window-content {
+            padding: 6px;
+        }
+        
+        .group-box {
+            padding: 12px 6px 6px 6px;
+        }
+        
+        .console {
+            height: 150px;
+            font-size: 7px;
+            padding: 3px;
+        }
+        
+        .amount-display {
+            font-size: 14px;
+        }
+        
+        .title-bar {
+            padding: 2px 4px;
+            font-size: 10px;
+        }
+        
+        .window-title span {
+            display: none;
+        }
+        
+        .window-title::after {
+            content: 'Донат на Лінь';
+        }
+    }
+
+    /* Скролбар стиль Windows 95 */
+    .console::-webkit-scrollbar {
+        width: 16px;
+    }
+
+    .console::-webkit-scrollbar-track {
+        background: #c0c0c0;
+        border: 1px inset #c0c0c0;
+    }
+
+    .console::-webkit-scrollbar-thumb {
+        background: #c0c0c0;
+        border: 1px outset #c0c0c0;
+    }
+
+    .console::-webkit-scrollbar-thumb:hover {
+        background: #d4d0c8;
+    }
+
+    .console::-webkit-scrollbar-corner {
+        background: #c0c0c0;
+    }
+</style>
+```
+
 </head>
 <body>
-<!-- Main container -->
-<div class="page-container">
-    
-<!-- bloc-0 -->
-<div class="bloc l-bloc" id="bloc-0">
-	<div class="container bloc-lg">
-		<div class="row">
-			<div class="col bloc-margin-bottom">
-				<img src="img/lazyload-ph.png" data-src="img/PB_Logo_2016-02.png" class="img-fluid mx-auto d-block img-style animated vanishIn lazyload" data-appear-anim-style="vanishIn" />
-				<div class="form-group container-div-margin-left text-lg-center ">
-					<label class="text-lg-center label-style text-md-center text-sm-center text-center animated fadeIn animDelay04" data-appear-anim-style="fadeIn">
-						<strong>Peter Bortin</strong>
-					</label>
-				</div>
-				<p class="text-lg-center mx-auto d-block p-margin-top text-md-center text-sm-center text-center animated fadeIn animDelay06" data-appear-anim-style="fadeIn">
-					Web-Designer
-				</p>
-				<div class="divider-h divider-style animated lightSpeedIn animDelay08" data-appear-anim-style="lightSpeedIn">
-					<span class="divider divider-half"></span>
-				</div>
-				<ul class="list-unstyled list-style animated bounceIn animDelay1" data-appear-anim-style="bounceIn">
-					<li>
-						<h6 class="mg-md mx-auto d-block h6-1-style text-lg-center text-md-center text-sm-center text-center">
-							<span class="fa fa-phone icon-dark-gray"></span>&nbsp; +380 98 41 45 699
-						</h6>
-					</li>
-					<li>
-						<h6 class="mg-md mx-auto d-block h6-2-style text-lg-center text-md-center text-sm-center text-center">
-							<span class="feather-icon icon-mail icon-dark-gray"></span>&nbsp; peter.bortin@gmail.com<br>
-						</h6>
-					</li>
-					<li>
-						<h6 class="mg-md mx-auto d-block h6-style text-lg-center text-md-center text-sm-center text-center">
-							<span class="fa fa-skype icon-dark-gray"></span>&nbsp; bortin89
-						</h6>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+    <div class="desktop">
+        <div class="window">
+            <div class="title-bar">
+                <div class="window-title">
+                    <div class="window-icon">D</div>
+                    <span>Донат на Лінь v1.0 - [Програма]</span>
+                </div>
+                <div class="window-controls">
+                    <div class="control-btn">_</div>
+                    <div class="control-btn">□</div>
+                    <div class="control-btn">×</div>
+                </div>
+            </div>
+
+```
+        <div class="menu-bar">
+            <div class="menu-item">Файл</div>
+            <div class="menu-item">Вид</div>
+            <div class="menu-item">Донати</div>
+            <div class="menu-item">Допомога</div>
+        </div>
+        
+        <div class="window-content">
+            <div class="main-content">
+                <div class="left-panel">
+                    <div class="group-box">
+                        <div class="group-title">Центр Пожертвувань</div>
+                        
+                        <div class="total-amount">
+                            <div class="amount-display" id="totalAmount">0</div>
+                            <div class="currency">гривень зібрано</div>
+                        </div>
+
+                        <div class="laziness-meter">
+                            <div class="meter-label">Рівень Ліні:</div>
+                            <div class="progress-container">
+                                <div class="progress-fill" id="lazyProgress"></div>
+                            </div>
+                            <div class="laziness-text" id="lazyText">Початковий рівень ліні</div>
+                        </div>
+
+                        <div class="donation-form">
+                            <div class="form-row">
+                                <span class="label">Сума:</span>
+                                <input type="number" class="amount-input" id="donationAmount" placeholder="Введіть суму..." min="1">
+                            </div>
+                            <button class="btn" id="donateBtn">Задонатити на лінь!</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-panel">
+                    <div class="group-box">
+                        <div class="group-title">Консоль Донатів</div>
+                        <div class="console" id="console">
+                            <div class="console-line">
+                                <span class="timestamp">[СИСТЕМА]</span> <span class="system-msg">Консоль донатів запущена...</span>
+                            </div>
+                            <div class="console-line">
+                                <span class="timestamp">[СИСТЕМА]</span> <span class="system-msg">Очікування пожертвувань...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="status-bar">
+                <div class="status-panel">Статус: Готовий</div>
+                <div class="status-panel">Донатерів: <span id="donorCount">0</span></div>
+                <div class="status-panel">Останній: <span id="lastDonation">-</span></div>
+            </div>
+        </div>
+    </div>
 </div>
-<!-- bloc-0 END -->
 
-<!-- bloc-1 -->
-<div class="bloc tc-dark-gray l-bloc" id="bloc-1">
-	<div class="container bloc-lg">
-		<div class="row">
-			<div class="col-md-2">
-				<h4 class="mg-md text-center  tc-dark-gray h4-bloc-1-style animated flipInX animDelay1" data-appear-anim-style="flipInX">
-					<strong>13+</strong>
-				</h4>
-				<p class="mg-md text-center  p-style animated flipInY animDelay2" data-appear-anim-style="flipInY">
-					years of experience
-				</p>
-			</div>
-			<div class="col-md-2">
-				<h4 class="mg-md text-center  tc-dark-gray animated flipInX animDelay1" data-appear-anim-style="flipInX">
-					<strong>5K</strong>
-				</h4>
-				<p class="mg-md text-center  h4-style none animDelay2 animated flipInY" data-appear-anim-style="flipInY">
-					madedesigns
-				</p>
-			</div>
-			<div class="col-md-2">
-				<h4 class="mg-md text-center  tc-dark-gray animated flipInX animDelay1" data-appear-anim-style="flipInX">
-					<strong>41</strong>
-				</h4>
-				<p class="mg-md text-center  h4-subscribers-style animDelay2 animated flipInY" data-appear-anim-style="flipInY">
-					working sites
-				</p>
-			</div>
-			<div class="col-md-2">
-				<h4 class="mg-md text-center  tc-dark-gray animated flipInX animDelay1" data-appear-anim-style="flipInX">
-					<strong>2K</strong>
-				</h4>
-				<p class="mg-md text-center  p-bloc-1-style animated flipInY animDelay2" data-appear-anim-style="flipInY">
-					html5 banners
-				</p>
-			</div>
-			<div class="col-md-2">
-				<h4 class="mg-md text-center  tc-dark-gray animated flipInX animDelay1" data-appear-anim-style="flipInX">
-					<strong>1</strong>
-				</h4>
-				<p class="mg-md text-center  p-6-style animated flipInY animDelay2" data-appear-anim-style="flipInY">
-					Apple MacBook Pro
-				</p>
-			</div>
-			<div class="col-md-2">
-				<h4 class="mg-md text-center  tc-dark-gray animated flipInX none animDelay1" data-appear-anim-style="flipInX">
-					<strong>999K</strong>
-				</h4>
-				<p class="mg-md text-center  p-7-style animated flipInY animDelay2" data-appear-anim-style="flipInY">
-					cups of coffee
-				</p>
-			</div>
-		</div>
-	</div>
+<!-- Модальне вікно досягнень -->
+<div class="achievement-modal" id="achievementModal">
+    <div class="modal-title-bar">
+        <span>Досягнення!</span>
+        <div class="window-controls">
+            <div class="control-btn" onclick="closeModal()">×</div>
+        </div>
+    </div>
+    <div class="modal-content">
+        <div class="modal-message" id="modalMessage"></div>
+        <button class="modal-btn" onclick="closeModal()">OK</button>
+    </div>
 </div>
-<!-- bloc-1 END -->
 
-<!-- ScrollToTop Button -->
-<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1',this)"><span class="fa fa-chevron-up"></span></a>
-<!-- ScrollToTop Button END-->
+<script>
+    let totalAmount = 0;
+    let donorCount = 0;
+    let achievementReached = false;
+    let consoleElement = document.getElementById('console');
+    let totalAmountElement = document.getElementById('totalAmount');
+    let lazyProgressElement = document.getElementById('lazyProgress');
+    let lazyTextElement = document.getElementById('lazyText');
+    let donateBtn = document.getElementById('donateBtn');
+    let donationAmountInput = document.getElementById('donationAmount');
+    let donorCountElement = document.getElementById('donorCount');
+    let lastDonationElement = document.getElementById('lastDonation');
+    let achievementModal = document.getElementById('achievementModal');
+    let modalMessage = document.getElementById('modalMessage');
 
+    // Фейкові імена донатерів
+    const fakeNames = [
+        'АнонімнийЛедар', 'СоннийКіт', 'ЛежебокаПро', 'МайстерДивана', 'КорольЛіжка',
+        'ЛінивийГеній', 'СплячаКраса', 'ДрімотаЕксперт', 'ПрофесорЛіні', 'ЦарЛежання',
+        'ЛедарНазавжди', 'МрійникДня', 'РелаксМайстер', 'НічогоНеробГерой', 'ЛінивецьПро'
+    ];
 
-</div>
-<!-- Main container END -->
-    
+    // Рівні ліні
+    const lazyLevels = [
+        { threshold: 0, text: 'Початковий рівень ліні', percentage: 0 },
+        { threshold: 500, text: 'Легка дрімота', percentage: 10 },
+        { threshold: 1000, text: 'Диванний експерт', percentage: 20 },
+        { threshold: 2000, text: 'Майстер прокрастинації', percentage: 35 },
+        { threshold: 3500, text: 'Професійний ледар', percentage: 50 },
+        { threshold: 5000, text: 'Гуру безділля', percentage: 65 },
+        { threshold: 7500, text: 'Імператор ліні', percentage: 80 },
+        { threshold: 10000, text: 'АБСОЛЮТНА ЛІНЬ', percentage: 100 }
+    ];
 
+    function updateLazinessLevel() {
+        // Перевірка на досягнення 1 млн
+        if (totalAmount >= 1000000 && !achievementReached) {
+            showAchievement();
+            return;
+        }
+
+        let currentLevel = lazyLevels[0];
+        for (let level of lazyLevels) {
+            if (totalAmount >= level.threshold) {
+                currentLevel = level;
+            }
+        }
+        
+        lazyProgressElement.style.width = currentLevel.percentage + '%';
+        lazyTextElement.textContent = currentLevel.text;
+    }
+
+    function showAchievement() {
+        achievementReached = true;
+        modalMessage.innerHTML = `
+            <strong>ВІТАЄМО!</strong><br><br>
+            Ви досягли неймовірного рубежу в 1 000 000 гривень!<br><br>
+            Підопічний досяг максимального рівня ліні!<br>
+            Тепер він почне новий цикл лінощів...<br><br>
+            <em>Рівень ліні скидається до початкового.</em>
+        `;
+        achievementModal.style.display = 'block';
+        
+        addToConsole(`<span class="timestamp">[СИСТЕМА]</span> <span class="system-msg">ДОСЯГНЕННЯ РОЗБЛОКОВАНО: МІЛЬЙОН НА ЛІНЬ!</span>`);
+        addToConsole(`<span class="timestamp">[СИСТЕМА]</span> <span class="system-msg">Скидання рівня ліні...</span>`);
+    }
+
+    function closeModal() {
+        achievementModal.style.display = 'none';
+        // Скидання до початку
+        totalAmount = 0;
+        achievementReached = false;
+        totalAmountElement.textContent = '0';
+        updateLazinessLevel();
+        addToConsole(`<span class="timestamp">[СИСТЕМА]</span> <span class="system-msg">Новий цикл ліні розпочато!</span>`);
+    }
+
+    function addToConsole(message) {
+        const consoleLine = document.createElement('div');
+        consoleLine.className = 'console-line';
+        consoleLine.innerHTML = message;
+        
+        consoleElement.appendChild(consoleLine);
+        consoleElement.scrollTop = consoleElement.scrollHeight;
+        
+        // Обмежуємо кількість повідомлень
+        const lines = consoleElement.children;
+        if (lines.length > 100) {
+            consoleElement.removeChild(lines[0]);
+        }
+    }
+
+    function getCurrentTime() {
+        const now = new Date();
+        return now.toLocaleTimeString('uk-UA', { hour12: false });
+    }
+
+    function updateTotal(amount) {
+        totalAmount += amount;
+        donorCount++;
+        totalAmountElement.textContent = totalAmount.toLocaleString('uk-UA');
+        donorCountElement.textContent = donorCount;
+        lastDonationElement.textContent = amount + ' грн';
+        updateLazinessLevel();
+    }
+
+    function generateFakeDonation() {
+        if (achievementReached) return;
+        
+        const randomName = fakeNames[Math.floor(Math.random() * fakeNames.length)];
+        const randomAmount = Math.floor(Math.random() * 500) + 50;
+        
+        const message = `
+            <span class="timestamp">[${getCurrentTime()}]</span>
+            <span class="donor-name">${randomName}</span> задонатив 
+            <span class="amount">${randomAmount} грн</span>
+        `;
+        
+        addToConsole(message);
+        updateTotal(randomAmount);
+    }
+
+    // Обробник кнопки донату
+    donateBtn.addEventListener('click', function() {
+        if (achievementReached) return;
+        
+        const amount = parseInt(donationAmountInput.value);
+        if (amount && amount > 0) {
+            const message = `
+                <span class="timestamp">[${getCurrentTime()}]</span>
+                <span class="donor-name">ВИ</span> задонатили 
+                <span class="amount">${amount} грн</span>
+            `;
+            addToConsole(message);
+            updateTotal(amount);
+            donationAmountInput.value = '';
+        } else {
+            alert('Будь ласка, введіть коректну суму!');
+        }
+    });
+
+    // Обробник Enter в полі вводу
+    donationAmountInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            donateBtn.click();
+        }
+    });
+
+    // Генерація фейкових донатів кожні 10 секунд
+    setInterval(generateFakeDonation, 10000);
+
+    // Початковий фейковий донат через 3 секунди
+    setTimeout(() => {
+        addToConsole('<span class="timestamp">[СИСТЕМА]</span> <span class="system-msg">Перші донати починають надходити...</span>');
+        setTimeout(generateFakeDonation, 2000);
+    }, 3000);
+
+    // Закриття модального вікна при кліку поза ним
+    achievementModal.addEventListener('click', function(e) {
+        if (e.target === achievementModal) {
+            closeModal();
+        }
+    });
+</script>
+```
 
 </body>
 </html>
